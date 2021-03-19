@@ -28,8 +28,6 @@ print("Unsorted:")
 print(dataSet)
 waitForInput()
 
-// Amount of unsorted variables
-var unsorted = dataSet.count - 1
 
 var swap = false
 
@@ -41,7 +39,8 @@ var swap = false
 for i in 0..<dataSet.count {
     
     // One pass through the array to float the highest number to the end
-    for j in 0..<unsorted {
+    // "i" will equal the amount of sorted elements after each pass
+    for j in 0..<dataSet.count - 1 - i {
         swap = false
         // Compare left value to right value
         if dataSet[j] > dataSet[j + 1] {
@@ -57,9 +56,7 @@ for i in 0..<dataSet.count {
     if swap == false {
         break
     }
-    // One value was sorted, therefore remove one from unsorted
-    unsorted -= 1
-
+    
     // Print the array after "n" passes
 
     print("Array after pass \(i + 1)")
