@@ -28,8 +28,8 @@ print("Unsorted:")
 print(dataSet)
 waitForInput()
 
-
-var swap = false
+// Swap variable
+var swapped = false
 
 // Sort the array
 
@@ -38,22 +38,26 @@ var swap = false
 
 for i in 0..<dataSet.count {
     
+    // Set the swapped flag to false
+    swapped = false
+    
     // One pass through the array to float the highest number to the end
     // "i" will equal the amount of sorted elements after each pass
     for j in 0..<dataSet.count - 1 - i {
-        swap = false
+        
         // Compare left value to right value
         if dataSet[j] > dataSet[j + 1] {
             
             // Swap value when left value is greated than the right value
-            swap = true
+            swapped = true
             let temporaryValue = dataSet[j]     // Set aside the left value
             dataSet[j] = dataSet[j + 1]         // Replace left with right
             dataSet[j + 1] = temporaryValue     // Replace right with temporary value
         }
     }
     
-    if swap == false {
+    // Stop further passes if there were no swaps
+    if swapped == false {
         break
     }
     
