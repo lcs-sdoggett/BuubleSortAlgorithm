@@ -28,6 +28,11 @@ print("Unsorted:")
 print(dataSet)
 waitForInput()
 
+// Amount of unsorted variables
+var unsorted = dataSet.count - 1
+
+var swap = false
+
 // Sort the array
 
 // Loop through the array "n" times
@@ -35,20 +40,26 @@ waitForInput()
 
 for i in 0..<dataSet.count {
     
-    // One pass through the array to flaot the highest number to the end
-    for j in 0..<dataSet.count - 1 {
-        
+    // One pass through the array to float the highest number to the end
+    for j in 0..<unsorted {
+        swap = false
         // Compare left value to right value
         if dataSet[j] > dataSet[j + 1] {
             
             // Swap value when left value is greated than the right value
+            swap = true
             let temporaryValue = dataSet[j]     // Set aside the left value
             dataSet[j] = dataSet[j + 1]         // Replace left with right
             dataSet[j + 1] = temporaryValue     // Replace right with temporary value
-            
         }
-        
     }
+    
+    if swap == false {
+        break
+    }
+    // One value was sorted, therefore remove one from unsorted
+    unsorted -= 1
+
     // Print the array after "n" passes
 
     print("Array after pass \(i + 1)")
